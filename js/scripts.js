@@ -463,9 +463,9 @@ if(servicesAdd) {
 // choiceDays ()
 // calcPrice ()
 
-// function saveToLocalStorage() {
-// 	localStorage.setItem('services', JSON.stringify(services));
-// }
+function saveToLocalStorage() {
+	localStorage.setItem('services', JSON.stringify(services));
+}
 
 // // calendar
 
