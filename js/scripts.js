@@ -378,43 +378,43 @@ if(servicesWrapper != null) {
   })
 }
 
-// // remove from cart
-// if(servicesAdd) {
-//   servicesAdd.addEventListener('click', (e) => {
+// remove from cart
+if(servicesAdd) {
+  servicesAdd.addEventListener('click', (e) => {
 
-//     const addItem = e.target.closest('.services-add-item');
-//     if(addItem == null) return
+    const addItem = e.target.closest('.services-add-item');
+    if(addItem == null) return
 
-//     const serviceName = addItem.querySelector('.services-add-name');
-//     const accordionItem = servicesWrapper.querySelectorAll('.accordion__item');
-//     accordionItem.forEach(item => {
-//       const accordionTitle = item.querySelector('.accordion__trigger-title');
-//       const BtnAdd = item.querySelector('.accordion__add-services');
+    const serviceName = addItem.querySelector('.services-add-name');
+    const accordionItem = servicesWrapper.querySelectorAll('.accordion__item');
+    accordionItem.forEach(item => {
+      const accordionTitle = item.querySelector('.accordion__trigger-title');
+      const BtnAdd = item.querySelector('.accordion__add-services');
 
-//       if (serviceName.innerText == accordionTitle.innerText) {
-//         BtnAdd.classList.remove('active');
-//         BtnAdd.removeAttribute('disabled');
-//       }
-//     })
+      if (serviceName.innerText == accordionTitle.innerText) {
+        BtnAdd.classList.remove('active');
+        BtnAdd.removeAttribute('disabled');
+      }
+    })
 
-//     if(e.target.classList.contains('services-add-close')) {
-//       addItem.remove()
-//     }
+    if(e.target.classList.contains('services-add-close')) {
+      addItem.remove()
+    }
 
-//     const index = services.findIndex(service => {
-//       if(service.title == serviceName.textContent) {
-//         return true
-//       }
-//     })
-//     services.splice(index, 1)
+    const index = services.findIndex(service => {
+      if(service.title == serviceName.textContent) {
+        return true
+      }
+    })
+    services.splice(index, 1)
 
 
 
-//     calcPrice ()
-//     saveToLocalStorage()
-//     test()
-//   });
-// }
+    // calcPrice ()
+    saveToLocalStorage()
+    test()
+  });
+}
 
 // // price calculator
 
