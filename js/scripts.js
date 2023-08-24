@@ -299,84 +299,84 @@ formData.forEach(form => {
 });
 
 
-// servises data
-const formstNumber = (x) =>  x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
-const formstNumber2 = (x) => x.toString().replace('.', '');
+// // servises data
+// const formstNumber = (x) =>  x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
+// const formstNumber2 = (x) => x.toString().replace('.', '');
 
 
-const servicesWrapper = document.querySelector('.accordion-services')
-const servicesAdd = document.querySelector('.services-add');
-const servicesPayment = document.querySelector('.services-add-payment')
-let services = [];
+// const servicesWrapper = document.querySelector('.accordion-services')
+// const servicesAdd = document.querySelector('.services-add');
+// const servicesPayment = document.querySelector('.services-add-payment')
+// let services = [];
 
-if(localStorage.getItem('services')) {
-  services = JSON.parse(localStorage.getItem('services'));
-}
+// if(localStorage.getItem('services')) {
+//   services = JSON.parse(localStorage.getItem('services'));
+// }
 
-test()
+// test()
 
-function test() {
-  if(servicesAdd) {
-    if(Array.from(servicesAdd.children).length < 1) {
-      services = []
-      localStorage.removeItem('services')
-    }
-  }
-}
+// function test() {
+//   if(servicesAdd) {
+//     if(Array.from(servicesAdd.children).length < 1) {
+//       services = []
+//       localStorage.removeItem('services')
+//     }
+//   }
+// }
 
-services.forEach(service => {
+// services.forEach(service => {
 
-  if(servicesPayment) {
-    const addItemHtml = `<div class="services-add-item">
-                            <div class="services-add-name">${service.title}</div>
-                            <div class="services-add-price">${service.price}</div>
-                          </div>`
+//   if(servicesPayment) {
+//     const addItemHtml = `<div class="services-add-item">
+//                             <div class="services-add-name">${service.title}</div>
+//                             <div class="services-add-price">${service.price}</div>
+//                           </div>`
 
-    servicesPayment.insertAdjacentHTML('beforeend', addItemHtml);
-  }
+//     servicesPayment.insertAdjacentHTML('beforeend', addItemHtml);
+//   }
 
-})
+// })
 
-if(servicesWrapper != null) {
-  servicesWrapper.addEventListener('click', (e) => {
-    if (e.target.classList.contains('accordion__add-services')) {
-      const servicesItem = e.target.closest('.accordion__item');
-      const servicesTitle = servicesItem.querySelector('.accordion__trigger-title');
-      const servicesPrice = servicesItem.querySelector('.accordion__trigger-subtitle');
+// if(servicesWrapper != null) {
+//   servicesWrapper.addEventListener('click', (e) => {
+//     if (e.target.classList.contains('accordion__add-services')) {
+//       const servicesItem = e.target.closest('.accordion__item');
+//       const servicesTitle = servicesItem.querySelector('.accordion__trigger-title');
+//       const servicesPrice = servicesItem.querySelector('.accordion__trigger-subtitle');
 
-      const newService = {
-        title: servicesTitle.innerText,
-        price: servicesPrice.innerText
-      }
-      services.push(newService)
-      saveToLocalStorage()
+//       const newService = {
+//         title: servicesTitle.innerText,
+//         price: servicesPrice.innerText
+//       }
+//       services.push(newService)
+//       saveToLocalStorage()
 
-      const addItemHtml = `<div class="services-add-item">
-                                <div class="services-add-name">${newService.title}</div>
-                                <div class="services-add-price">${newService.price}</div>
-                                <button class="services-add-close">
-                                    <i class="fa-solid fa-xmark services-icon"></i>
-                                </button>
-                              </div>`
+//       const addItemHtml = `<div class="services-add-item">
+//                                 <div class="services-add-name">${newService.title}</div>
+//                                 <div class="services-add-price">${newService.price}</div>
+//                                 <button class="services-add-close">
+//                                     <i class="fa-solid fa-xmark services-icon"></i>
+//                                 </button>
+//                               </div>`
 
-      servicesAdd.insertAdjacentHTML('beforeend', addItemHtml);
+//       servicesAdd.insertAdjacentHTML('beforeend', addItemHtml);
 
 
-      const addItem = document.querySelectorAll('.services-add-item');
+//       const addItem = document.querySelectorAll('.services-add-item');
 
-      addItem.forEach(item => {
-        const itemName = item.querySelector('.services-add-name');
-        if(newService.title === itemName.innerText) {
-          e.target.setAttribute('disabled', '');
-          e.target.classList.add('active');
-        }
+//       addItem.forEach(item => {
+//         const itemName = item.querySelector('.services-add-name');
+//         if(newService.title === itemName.innerText) {
+//           e.target.setAttribute('disabled', '');
+//           e.target.classList.add('active');
+//         }
 
-      })
-      calcPrice ()
-      test()
-    }
-  })
-}
+//       })
+//       calcPrice ()
+//       test()
+//     }
+//   })
+// }
 
 // // remove from cart
 // if(servicesAdd) {
@@ -416,58 +416,58 @@ if(servicesWrapper != null) {
 //   });
 // }
 
-// price calculator
+// // price calculator
 
-function calcPrice () {
-  const servicesItem = document.querySelectorAll('.services-add-item');
-  const fullPrice = document.querySelector('.services-price');
+// function calcPrice () {
+//   const servicesItem = document.querySelectorAll('.services-add-item');
+//   const fullPrice = document.querySelector('.services-price');
 
-  let totalPrice = 0;
+//   let totalPrice = 0;
 
-  let FullPrice = {}
+//   let FullPrice = {}
 
-  if(localStorage.getItem('FullPrice')) {
-    FullPrice = JSON.parse(localStorage.getItem('FullPrice'))
-  }
+//   if(localStorage.getItem('FullPrice')) {
+//     FullPrice = JSON.parse(localStorage.getItem('FullPrice'))
+//   }
 
-  servicesItem.forEach(item => {
+//   servicesItem.forEach(item => {
 
-    const price = item.querySelector('.services-add-price');
-    const formstPrice = parseInt(formstNumber2(price.innerText));
+//     const price = item.querySelector('.services-add-price');
+//     const formstPrice = parseInt(formstNumber2(price.innerText));
 
-    totalPrice += formstPrice;
+//     totalPrice += formstPrice;
 
-    const newPrice = {
-      price: totalPrice
-    }
-    FullPrice['price'] = `${totalPrice}`
+//     const newPrice = {
+//       price: totalPrice
+//     }
+//     FullPrice['price'] = `${totalPrice}`
 
-    fullPrice.textContent = `${FullPrice.price}kr`;
+//     fullPrice.textContent = `${FullPrice.price}kr`;
 
-    fullPrice.textContent = `${formstNumber(newPrice.price)}kr`;
-  })
+//     fullPrice.textContent = `${formstNumber(newPrice.price)}kr`;
+//   })
 
-  if(fullPrice) {
-    if(servicesItem.length < 1) {
-      fullPrice.textContent = `0`;
-    }
-  }
+//   if(fullPrice) {
+//     if(servicesItem.length < 1) {
+//       fullPrice.textContent = `0`;
+//     }
+//   }
 
-  function saveToLocalStoragePrice() {
-    localStorage.setItem('FullPrice', JSON.stringify(FullPrice));
-  }
+//   function saveToLocalStoragePrice() {
+//     localStorage.setItem('FullPrice', JSON.stringify(FullPrice));
+//   }
 
-  saveToLocalStoragePrice()
-}
+//   saveToLocalStoragePrice()
+// }
 
 // choiceDays ()
-calcPrice ()
+// calcPrice ()
 
-function saveToLocalStorage() {
-	localStorage.setItem('services', JSON.stringify(services));
-}
+// function saveToLocalStorage() {
+// 	localStorage.setItem('services', JSON.stringify(services));
+// }
 
-// calendar
+// // calendar
 
 const calendar = document.querySelector('.calendar');
 const calendarWrap = document.querySelectorAll('.calendar-wrap');
@@ -557,8 +557,6 @@ calendarWrap.forEach(wrap => {
 
     })
   }
-
-
 })
 
 // function choiceDays () {
@@ -678,45 +676,45 @@ calendarWrap.forEach(wrap => {
 // }
 
 
-const fullPrice = document.querySelector('.services-price');
-if(calendar != null) {
-  calendar.addEventListener('click', (e) => {
-    const servicesAddLease = servicesAdd.querySelector('.services-add-item-lease');
-    const activeEl =  calendar.querySelectorAll('.active');
+// const fullPrice = document.querySelector('.services-price');
+// if(calendar != null) {
+//   calendar.addEventListener('click', (e) => {
+//     const servicesAddLease = servicesAdd.querySelector('.services-add-item-lease');
+//     const activeEl =  calendar.querySelectorAll('.active');
 
-    if (e.target.classList.contains('calendar-days-item')){
-      e.target.classList.toggle('active');
-      const activeEl =  calendar.querySelectorAll('.active');
+//     if (e.target.classList.contains('calendar-days-item')){
+//       e.target.classList.toggle('active');
+//       const activeEl =  calendar.querySelectorAll('.active');
 
-      if (activeEl.length > 2) {
-        e.target.classList.remove('active');
-      }
+//       if (activeEl.length > 2) {
+//         e.target.classList.remove('active');
+//       }
 
-      if(activeEl.length >= 2) {
-        // choiceDays ()
-      } else {
-        if(servicesAddLease == null) return
+//       if(activeEl.length >= 2) {
+//         choiceDays ()
+//       } else {
+//         if(servicesAddLease == null) return
 
-        servicesAddLease.remove();
-        calcPrice()
-      }
-    }
+//         servicesAddLease.remove();
+//         calcPrice()
+//       }
+//     }
 
-    if(calendar != null) {
-      const calendarDaysItem = calendar.querySelectorAll('.calendar-days-item');
+//     if(calendar != null) {
+//       const calendarDaysItem = calendar.querySelectorAll('.calendar-days-item');
 
-      calendarDaysItem.forEach(item => {
-        if (activeEl.length == 2) {
-          if(!item.classList.contains('active')) {
-            item.style.pointerEvents = 'none';
-          }
-        } else {
-          item.style.pointerEvents = 'auto';
-        }
-      })
-    }
-  })
-}
+//       calendarDaysItem.forEach(item => {
+//         if (activeEl.length == 2) {
+//           if(!item.classList.contains('active')) {
+//             item.style.pointerEvents = 'none';
+//           }
+//         } else {
+//           item.style.pointerEvents = 'auto';
+//         }
+//       })
+//     }
+//   })
+// }
 
 // form
 
