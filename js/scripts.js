@@ -460,7 +460,7 @@ function calcPrice () {
   saveToLocalStoragePrice()
 }
 
-choiceDays ()
+// choiceDays ()
 calcPrice ()
 
 function saveToLocalStorage() {
@@ -561,121 +561,121 @@ calendarWrap.forEach(wrap => {
 
 })
 
-function choiceDays () {
+// function choiceDays () {
 
-  const calendar = document.querySelector('.calendar')
-  const servicesAdd = document.querySelector('.services-add');
-  const servicesAddPayment = document.querySelector('.services-add-payment');
+//   const calendar = document.querySelector('.calendar')
+//   const servicesAdd = document.querySelector('.services-add');
+//   const servicesAddPayment = document.querySelector('.services-add-payment');
 
-  let newLease = {}
-  let checkInDate = {}
-  let checkOutDate = {}
+//   let newLease = {}
+//   let checkInDate = {}
+//   let checkOutDate = {}
 
-  if(localStorage.getItem('newLease')) {
-    newLease = JSON.parse(localStorage.getItem('newLease'))
-  }
-  if(localStorage.getItem('checkInDate')) {
-    checkInDate = JSON.parse(localStorage.getItem('checkInDate'))
-  }
-  if(localStorage.getItem('checkOutDate')) {
-    checkOutDate = JSON.parse(localStorage.getItem('checkOutDate'))
-  }
+//   if(localStorage.getItem('newLease')) {
+//     newLease = JSON.parse(localStorage.getItem('newLease'))
+//   }
+//   if(localStorage.getItem('checkInDate')) {
+//     checkInDate = JSON.parse(localStorage.getItem('checkInDate'))
+//   }
+//   if(localStorage.getItem('checkOutDate')) {
+//     checkOutDate = JSON.parse(localStorage.getItem('checkOutDate'))
+//   }
 
-  const calendarWrapper = document.querySelector('.calendar-wrapper')
-  if (calendarWrapper != null) {
-    const itemActive = calendarWrapper.querySelectorAll('.calendar-days-item.active')
+//   const calendarWrapper = document.querySelector('.calendar-wrapper')
+//   if (calendarWrapper != null) {
+//     const itemActive = calendarWrapper.querySelectorAll('.calendar-days-item.active')
 
-    const CheckIn = document.getElementById('CheckIn');
-    const CheckOut = document.getElementById('CheckOut');
+//     const CheckIn = document.getElementById('CheckIn');
+//     const CheckOut = document.getElementById('CheckOut');
 
-    const itemActiveArray = Array.from(itemActive);
-    if(itemActiveArray.length > 1) {
-      const itemFirst = itemActiveArray.shift();
-      const itemLast = itemActiveArray.shift();
+//     const itemActiveArray = Array.from(itemActive);
+//     if(itemActiveArray.length > 1) {
+//       const itemFirst = itemActiveArray.shift();
+//       const itemLast = itemActiveArray.shift();
 
-      function selectedDate (variableName) {
-        const currentWrap = variableName.closest('.calendar-wrap');
-        const currentMonth = currentWrap.querySelector('.calendar-month');
-        const currentYears = currentWrap.querySelector('.calendar-year');
-        const dateFirst = new Date(`${variableName.textContent} ${currentYears.textContent} ${currentMonth.textContent}`);
+//       function selectedDate (variableName) {
+//         const currentWrap = variableName.closest('.calendar-wrap');
+//         const currentMonth = currentWrap.querySelector('.calendar-month');
+//         const currentYears = currentWrap.querySelector('.calendar-year');
+//         const dateFirst = new Date(`${variableName.textContent} ${currentYears.textContent} ${currentMonth.textContent}`);
 
-        console.log(`${dateFirst} variableName`);
+//         console.log(`${dateFirst} variableName`);
 
-        return dateFirst;
-      }
+//         return dateFirst;
+//       }
 
-      const diffDate = selectedDate(itemLast) - selectedDate(itemFirst);
-      const daysLeft = Math.ceil(diffDate / 1000 / 60 / 60 / 24);
-      function formatTime(data) {
-        const month = data.getMonth() + 1;
-        const daty = data.getDate();
-        const year = data.getFullYear();
+//       const diffDate = selectedDate(itemLast) - selectedDate(itemFirst);
+//       const daysLeft = Math.ceil(diffDate / 1000 / 60 / 60 / 24);
+//       function formatTime(data) {
+//         const month = data.getMonth() + 1;
+//         const daty = data.getDate();
+//         const year = data.getFullYear();
 
-        return `${month}/${daty}/${year}`;
-      }
-      console.log(daysLeft);
+//         return `${month}/${daty}/${year}`;
+//       }
+//       console.log(daysLeft);
 
-      CheckIn.value = `${formatTime(selectedDate(itemFirst))}`;
-      CheckOut.value = `${formatTime(selectedDate(itemLast))}`;
+//       CheckIn.value = `${formatTime(selectedDate(itemFirst))}`;
+//       CheckOut.value = `${formatTime(selectedDate(itemLast))}`;
 
-      checkInDate['valueDate'] = CheckIn.value
-      checkOutDate['valueDate'] = CheckOut.value
-
-
-      const result = 3200 * daysLeft;
-
-      newLease['title'] = `${daysLeft}`
-      newLease['price'] = `${result}`
+//       checkInDate['valueDate'] = CheckIn.value
+//       checkOutDate['valueDate'] = CheckOut.value
 
 
-      saveToLocalStorageLease()
-      saveToLocalStorageCheckInDate()
-      saveToLocalStorageCheckOutDate()
+//       const result = 3200 * daysLeft;
 
-      const servicesAddLeaseHtml = `<div class="services-add-item services-add-item-lease">
-                                    <div class="services-add-name">3.200kr x ${daysLeft} nights</div>
-                                    <div class="services-add-price">${formstNumber(result)}kr</div>
-                                  </div>`
-
-      servicesAdd.insertAdjacentHTML('afterbegin', servicesAddLeaseHtml);
-      calendar.classList.remove('active');
-      calcPrice()
-
-      function saveToLocalStorageLease() {
-        localStorage.setItem('newLease', JSON.stringify(newLease));
-      }
-      function saveToLocalStorageCheckInDate() {
-        localStorage.setItem('checkInDate', JSON.stringify(checkInDate));
-      }
-      function saveToLocalStorageCheckOutDate() {
-        localStorage.setItem('checkOutDate', JSON.stringify(checkOutDate));
-      }
-    }
-  }
-
-  if(servicesAddPayment) {
-    const servicesAddLeaseHtml1 = `<div class="services-add-item services-add-item-lease">
-      <div class="services-add-name">3.200kr x ${newLease.title} nights</div>
-      <div class="services-add-price">${formstNumber(newLease.price)}kr</div>
-      </div>`
-
-      servicesAddPayment.insertAdjacentHTML('afterbegin', servicesAddLeaseHtml1);
-  }
+//       newLease['title'] = `${daysLeft}`
+//       newLease['price'] = `${result}`
 
 
-  const formDataPayment = document.querySelector('.form-data-payment')
-  if(formDataPayment) {
-    function renderDate(input, array) {
-      input = document.getElementById(input);
+//       saveToLocalStorageLease()
+//       saveToLocalStorageCheckInDate()
+//       saveToLocalStorageCheckOutDate()
 
-      input.value = array.valueDate
-    }
-      renderDate('checkInPayment', checkInDate)
-      renderDate('checkOutPayment', checkOutDate)
-  }
+//       const servicesAddLeaseHtml = `<div class="services-add-item services-add-item-lease">
+//                                     <div class="services-add-name">3.200kr x ${daysLeft} nights</div>
+//                                     <div class="services-add-price">${formstNumber(result)}kr</div>
+//                                   </div>`
+
+//       servicesAdd.insertAdjacentHTML('afterbegin', servicesAddLeaseHtml);
+//       calendar.classList.remove('active');
+//       calcPrice()
+
+//       function saveToLocalStorageLease() {
+//         localStorage.setItem('newLease', JSON.stringify(newLease));
+//       }
+//       function saveToLocalStorageCheckInDate() {
+//         localStorage.setItem('checkInDate', JSON.stringify(checkInDate));
+//       }
+//       function saveToLocalStorageCheckOutDate() {
+//         localStorage.setItem('checkOutDate', JSON.stringify(checkOutDate));
+//       }
+//     }
+//   }
+
+//   if(servicesAddPayment) {
+//     const servicesAddLeaseHtml1 = `<div class="services-add-item services-add-item-lease">
+//       <div class="services-add-name">3.200kr x ${newLease.title} nights</div>
+//       <div class="services-add-price">${formstNumber(newLease.price)}kr</div>
+//       </div>`
+
+//       servicesAddPayment.insertAdjacentHTML('afterbegin', servicesAddLeaseHtml1);
+//   }
 
 
-}
+//   const formDataPayment = document.querySelector('.form-data-payment')
+//   if(formDataPayment) {
+//     function renderDate(input, array) {
+//       input = document.getElementById(input);
+
+//       input.value = array.valueDate
+//     }
+//       renderDate('checkInPayment', checkInDate)
+//       renderDate('checkOutPayment', checkOutDate)
+//   }
+
+
+// }
 
 
 const fullPrice = document.querySelector('.services-price');
@@ -693,7 +693,7 @@ if(calendar != null) {
       }
 
       if(activeEl.length >= 2) {
-        choiceDays ()
+        // choiceDays ()
       } else {
         if(servicesAddLease == null) return
 
