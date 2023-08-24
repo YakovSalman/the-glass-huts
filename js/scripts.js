@@ -197,106 +197,106 @@ selectLanguage()
 
 // form-data
 
-// const formData = document.querySelectorAll('.form-data');
-// let guests = {};
-// if(localStorage.getItem('guests')) {
-//   guests = JSON.parse(localStorage.getItem('guests'))
-// }
-// formData.forEach(form => {
-//   const formWrapNumber = form.querySelector('.form-data-item-wrap');
-//   const formInputCalendar = form.querySelectorAll('.form-data-date');
-//   const btnFormData = form.querySelector('.btn-form-data');
+const formData = document.querySelectorAll('.form-data');
+let guests = {};
+if(localStorage.getItem('guests')) {
+  guests = JSON.parse(localStorage.getItem('guests'))
+}
+formData.forEach(form => {
+  const formWrapNumber = form.querySelector('.form-data-item-wrap');
+  const formInputCalendar = form.querySelectorAll('.form-data-date');
+  const btnFormData = form.querySelector('.btn-form-data');
 
-//   const formInputNum = formWrapNumber.querySelector('.form-data-num');
-//   const btnMinus = formWrapNumber.querySelector('.btn-minus');
-//   const btnPlus = formWrapNumber.querySelector('.btn-plus');
-//   const formCalendar = form.querySelector('.form-data-calendar');
-//   const calendar = form.querySelector('.calendar');
-
-
-//   if(calendar) {
-//     btnFormData.addEventListener('click', (e) => {
-
-//       formInputCalendar.forEach(input => {
-//         if(input.value == '') {
-//           e.preventDefault()
-
-//           input.classList.add('inactive')
-//         } else {
-//           input.classList.remove('inactive')
-//         }
-//       })
-//     })
-//     form.addEventListener('submit', (e) => {
-//       e.preventDefault();
-//     });
-
-//     formCalendar.addEventListener('click', (e) => {
-//       e.stopPropagation()
-//       calendar.classList.add('active');
-//     })
+  const formInputNum = formWrapNumber.querySelector('.form-data-num');
+  const btnMinus = formWrapNumber.querySelector('.btn-minus');
+  const btnPlus = formWrapNumber.querySelector('.btn-plus');
+  const formCalendar = form.querySelector('.form-data-calendar');
+  const calendar = form.querySelector('.calendar');
 
 
-//     document.addEventListener('click', (e) => {
-//       if(!e.target.closest('.calendar')) {
-//         calendar.classList.remove('active');
-//       }
-//     })
+  if(calendar) {
+    btnFormData.addEventListener('click', (e) => {
 
-//     if(calendar != null) {
-//       const btnEvent = calendar.querySelector('.calendar-btn-event');
-//       const btnClear = calendar.querySelector('.calendar-btn-clear');
+      formInputCalendar.forEach(input => {
+        if(input.value == '') {
+          e.preventDefault()
 
-//       btnEvent.addEventListener('click', () => {
-//         calendar.classList.remove('active');
-//       })
+          input.classList.add('inactive')
+        } else {
+          input.classList.remove('inactive')
+        }
+      })
+    })
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+    });
 
-//       btnClear.addEventListener('click', () => {
-//         const calendarItem = calendar.querySelectorAll('li.active');
-//         calendarItem.forEach(item => {
-//           item.classList.remove('active')
-//         })
-//       })
-//     }
-//     guests['value'] = formInputNum.value
-//     saveToLocalStorageGuests()
-//     btnPlus.addEventListener('click', () => {
-//       if(formInputNum.value != 3) {
-//         let formInputValue = parseInt(formInputNum.value);
-
-//         let value = ++formInputValue ;
-//         formInputNum.value = value;
-
-//         guests['value'] = formInputNum.value
-//         saveToLocalStorageGuests()
-//       }
-//     })
-
-//     btnMinus.addEventListener('click', () => {
-//       if (formInputNum.value != 1) {
-//         let formInputValue = parseInt(formInputNum.value);
-
-//         let value = --formInputValue;
-//         formInputNum.value = value;
-
-//         guests['value'] = formInputNum.value
-//         saveToLocalStorageGuests()
-//       }
-//     })
-
-//   }
+    formCalendar.addEventListener('click', (e) => {
+      e.stopPropagation()
+      calendar.classList.add('active');
+    })
 
 
-//   const guestsPayment = document.querySelector('.guests-payment')
-//   if(guestsPayment) {
-//     guestsPayment.value = guests.value
-//   }
+    document.addEventListener('click', (e) => {
+      if(!e.target.closest('.calendar')) {
+        calendar.classList.remove('active');
+      }
+    })
+
+    if(calendar != null) {
+      const btnEvent = calendar.querySelector('.calendar-btn-event');
+      const btnClear = calendar.querySelector('.calendar-btn-clear');
+
+      btnEvent.addEventListener('click', () => {
+        calendar.classList.remove('active');
+      })
+
+      btnClear.addEventListener('click', () => {
+        const calendarItem = calendar.querySelectorAll('li.active');
+        calendarItem.forEach(item => {
+          item.classList.remove('active')
+        })
+      })
+    }
+    guests['value'] = formInputNum.value
+    saveToLocalStorageGuests()
+    btnPlus.addEventListener('click', () => {
+      if(formInputNum.value != 3) {
+        let formInputValue = parseInt(formInputNum.value);
+
+        let value = ++formInputValue ;
+        formInputNum.value = value;
+
+        guests['value'] = formInputNum.value
+        saveToLocalStorageGuests()
+      }
+    })
+
+    btnMinus.addEventListener('click', () => {
+      if (formInputNum.value != 1) {
+        let formInputValue = parseInt(formInputNum.value);
+
+        let value = --formInputValue;
+        formInputNum.value = value;
+
+        guests['value'] = formInputNum.value
+        saveToLocalStorageGuests()
+      }
+    })
+
+  }
 
 
-//   function saveToLocalStorageGuests() {
-//     localStorage.setItem('guests', JSON.stringify(guests));
-//   }
-// });
+  const guestsPayment = document.querySelector('.guests-payment')
+  if(guestsPayment) {
+    guestsPayment.value = guests.value
+  }
+
+
+  function saveToLocalStorageGuests() {
+    localStorage.setItem('guests', JSON.stringify(guests));
+  }
+});
 
 
 // // servises data
