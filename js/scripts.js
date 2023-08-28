@@ -467,97 +467,97 @@ formData.forEach(form => {
 // 	localStorage.setItem('services', JSON.stringify(services));
 // }
 
-// // // calendar
+// calendar
 
-// const calendar = document.querySelector('.calendar');
-// const calendarWrap = document.querySelectorAll('.calendar-wrap');
-// const calendars = []
+const calendar = document.querySelector('.calendar');
+const calendarWrap = document.querySelectorAll('.calendar-wrap');
+const calendars = []
 
-// calendarWrap.forEach(wrap => {
-//   const days = wrap.querySelector('.calendar-days');
-//   const month = wrap.querySelector('.calendar-month');
-//   const month2 = document.querySelector('.calendar-month-2');
-//   const year = wrap.querySelector('.calendar-year');
+calendarWrap.forEach(wrap => {
+  const days = wrap.querySelector('.calendar-days');
+  const month = wrap.querySelector('.calendar-month');
+  const month2 = document.querySelector('.calendar-month-2');
+  const year = wrap.querySelector('.calendar-year');
 
-//   let date = new Date();
-//   let currentYears = date.getFullYear();
-//   let currentMonth = date.getMonth();
-//   let nextMonth = date.getMonth() + 1;
+  let date = new Date();
+  let currentYears = date.getFullYear();
+  let currentMonth = date.getMonth();
+  let nextMonth = date.getMonth() + 1;
 
-//   const months = ["January", "February", "March", "April", "May", "June", "July",
-//                   "August", "September", "October", "November", "December"];
+  const months = ["January", "February", "March", "April", "May", "June", "July",
+                  "August", "September", "October", "November", "December"];
 
-//   const renderCalendar = () => {
-//     let firstDayofMonth = new Date(currentYears, currentMonth, 1).getDay(),
-//         lastDateofMonth = new Date(currentYears, currentMonth + 1, 0).getDate();
+  const renderCalendar = () => {
+    let firstDayofMonth = new Date(currentYears, currentMonth, 1).getDay(),
+        lastDateofMonth = new Date(currentYears, currentMonth + 1, 0).getDate();
 
-//     let nextFirstDayofMonth = new Date(currentYears, nextMonth, 1).getDay(),
-//         nextLastDateofMonth = new Date(currentYears, nextMonth + 1, 0).getDate();
+    let nextFirstDayofMonth = new Date(currentYears, nextMonth, 1).getDay(),
+        nextLastDateofMonth = new Date(currentYears, nextMonth + 1, 0).getDate();
 
-//     let liTag = ''
+    let liTag = ''
 
-//     function cycles (firstDayClass, lastDateClass) {
-//       for (let i = firstDayClass; i > 1; i--) {
-//         liTag += `<li></li>`
-//       }
+    function cycles (firstDayClass, lastDateClass) {
+      for (let i = firstDayClass; i > 1; i--) {
+        liTag += `<li></li>`
+      }
 
-//       if(firstDayClass == 0) {
-//         for (let i = 0; i < 6; i++) {
-//           liTag += `<li></li>`
-//         }
-//       }
+      if(firstDayClass == 0) {
+        for (let i = 0; i < 6; i++) {
+          liTag += `<li></li>`
+        }
+      }
 
-//       for (let i = 1; i <= lastDateClass; i++) {
-//         liTag += `<li class="calendar-days-item">${i}</li>`
-//       }
-//     }
+      for (let i = 1; i <= lastDateClass; i++) {
+        liTag += `<li class="calendar-days-item">${i}</li>`
+      }
+    }
 
-//     if(wrap.classList.contains('calendar-wrap-next')) {
-//       cycles (nextFirstDayofMonth, nextLastDateofMonth);
-//     }
-//     if(wrap.classList.contains('calendar-wrap-prev')) {
-//       cycles (firstDayofMonth, lastDateofMonth);
-//     }
+    if(wrap.classList.contains('calendar-wrap-next')) {
+      cycles (nextFirstDayofMonth, nextLastDateofMonth);
+    }
+    if(wrap.classList.contains('calendar-wrap-prev')) {
+      cycles (firstDayofMonth, lastDateofMonth);
+    }
 
-//     month.textContent = `${months[currentMonth]}`;
-//     month2.textContent = `${months[nextMonth]}`;
-//     year.textContent = currentYears;
-//     days.innerHTML = liTag;
+    month.textContent = `${months[currentMonth]}`;
+    month2.textContent = `${months[nextMonth]}`;
+    year.textContent = currentYears;
+    days.innerHTML = liTag;
 
-//   }
-//   renderCalendar()
-//   if(calendar != null) {
-//     calendar.addEventListener('click', (e) => {
+  }
+  renderCalendar()
+  if(calendar != null) {
+    calendar.addEventListener('click', (e) => {
 
-//       if(e.target.classList.contains('btn-calendar-next')) {
+      if(e.target.classList.contains('btn-calendar-next')) {
 
-//         if(currentMonth == 11) {
-//           currentMonth = -1
-//         }
-//         if(nextMonth == 11) {
-//           nextMonth = -1
-//         }
+        if(currentMonth == 11) {
+          currentMonth = -1
+        }
+        if(nextMonth == 11) {
+          nextMonth = -1
+        }
 
-//         month.textContent = months[++currentMonth];
-//         month2.textContent = months[++nextMonth];
-//         renderCalendar()
-//       }
+        month.textContent = months[++currentMonth];
+        month2.textContent = months[++nextMonth];
+        renderCalendar()
+      }
 
-//       if(e.target.classList.contains('btn-calendar-prev')) {
-//         if(currentMonth == 0) {
-//           currentMonth = 12
-//         }
-//         if(nextMonth == 0) {
-//           nextMonth = 12
-//         }
-//         month.textContent = months[--currentMonth];
-//         month2.textContent = months[--nextMonth];
-//         renderCalendar()
-//       }
+      if(e.target.classList.contains('btn-calendar-prev')) {
+        if(currentMonth == 0) {
+          currentMonth = 12
+        }
+        if(nextMonth == 0) {
+          nextMonth = 12
+        }
+        month.textContent = months[--currentMonth];
+        month2.textContent = months[--nextMonth];
+        renderCalendar()
+      }
 
-//     })
-//   }
-// })
+    })
+  }
+})
 
 // function choiceDays () {
 
