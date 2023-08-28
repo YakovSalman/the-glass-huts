@@ -313,16 +313,16 @@ if(localStorage.getItem('services')) {
   services = JSON.parse(localStorage.getItem('services'));
 }
 
-test()
+// test()
 
-function test() {
-  if(servicesAdd) {
-    if(Array.from(servicesAdd.children).length < 1) {
-      services = []
-      localStorage.removeItem('services')
-    }
-  }
-}
+// function test() {
+//   if(servicesAdd) {
+//     if(Array.from(servicesAdd.children).length < 1) {
+//       services = []
+//       localStorage.removeItem('services')
+//     }
+//   }
+// }
 
 services.forEach(service => {
 
@@ -373,7 +373,7 @@ if(servicesWrapper != null) {
 
       })
       // calcPrice ()
-      test()
+      // test()
     }
   })
 }
@@ -412,7 +412,7 @@ if(servicesAdd) {
 
     // calcPrice ()
     saveToLocalStorage()
-    test()
+    // test()
   });
 }
 
