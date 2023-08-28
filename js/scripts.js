@@ -299,19 +299,19 @@ formData.forEach(form => {
 });
 
 
-// servises data
-const formstNumber = (x) =>  x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
-const formstNumber2 = (x) => x.toString().replace('.', '');
+// // servises data
+// const formstNumber = (x) =>  x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
+// const formstNumber2 = (x) => x.toString().replace('.', '');
 
 
-const servicesWrapper = document.querySelector('.accordion-services')
-const servicesAdd = document.querySelector('.services-add');
-const servicesPayment = document.querySelector('.services-add-payment')
-let services = [];
+// const servicesWrapper = document.querySelector('.accordion-services')
+// const servicesAdd = document.querySelector('.services-add');
+// const servicesPayment = document.querySelector('.services-add-payment')
+// let services = [];
 
-if(localStorage.getItem('services')) {
-  services = JSON.parse(localStorage.getItem('services'));
-}
+// if(localStorage.getItem('services')) {
+//   services = JSON.parse(localStorage.getItem('services'));
+// }
 
 // test()
 
@@ -324,97 +324,97 @@ if(localStorage.getItem('services')) {
 //   }
 // }
 
-services.forEach(service => {
+// services.forEach(service => {
 
-  if(servicesPayment) {
-    const addItemHtml = `<div class="services-add-item">
-                            <div class="services-add-name">${service.title}</div>
-                            <div class="services-add-price">${service.price}</div>
-                          </div>`
+//   if(servicesPayment) {
+//     const addItemHtml = `<div class="services-add-item">
+//                             <div class="services-add-name">${service.title}</div>
+//                             <div class="services-add-price">${service.price}</div>
+//                           </div>`
 
-    servicesPayment.insertAdjacentHTML('beforeend', addItemHtml);
-  }
+//     servicesPayment.insertAdjacentHTML('beforeend', addItemHtml);
+//   }
 
-})
+// })
 
-if(servicesWrapper != null) {
-  servicesWrapper.addEventListener('click', (e) => {
-    if (e.target.classList.contains('accordion__add-services')) {
-      const servicesItem = e.target.closest('.accordion__item');
-      const servicesTitle = servicesItem.querySelector('.accordion__trigger-title');
-      const servicesPrice = servicesItem.querySelector('.accordion__trigger-subtitle');
+// if(servicesWrapper != null) {
+//   servicesWrapper.addEventListener('click', (e) => {
+//     if (e.target.classList.contains('accordion__add-services')) {
+//       const servicesItem = e.target.closest('.accordion__item');
+//       const servicesTitle = servicesItem.querySelector('.accordion__trigger-title');
+//       const servicesPrice = servicesItem.querySelector('.accordion__trigger-subtitle');
 
-      const newService = {
-        title: servicesTitle.innerText,
-        price: servicesPrice.innerText
-      }
-      services.push(newService)
-      saveToLocalStorage()
+//       const newService = {
+//         title: servicesTitle.innerText,
+//         price: servicesPrice.innerText
+//       }
+//       services.push(newService)
+//       saveToLocalStorage()
 
-      const addItemHtml = `<div class="services-add-item">
-                                <div class="services-add-name">${newService.title}</div>
-                                <div class="services-add-price">${newService.price}</div>
-                                <button class="services-add-close">
-                                    <i class="fa-solid fa-xmark services-icon"></i>
-                                </button>
-                              </div>`
+//       const addItemHtml = `<div class="services-add-item">
+//                                 <div class="services-add-name">${newService.title}</div>
+//                                 <div class="services-add-price">${newService.price}</div>
+//                                 <button class="services-add-close">
+//                                     <i class="fa-solid fa-xmark services-icon"></i>
+//                                 </button>
+//                               </div>`
 
-      servicesAdd.insertAdjacentHTML('beforeend', addItemHtml);
-
-
-      const addItem = document.querySelectorAll('.services-add-item');
-
-      addItem.forEach(item => {
-        const itemName = item.querySelector('.services-add-name');
-        if(newService.title === itemName.innerText) {
-          e.target.setAttribute('disabled', '');
-          e.target.classList.add('active');
-        }
-
-      })
-      // calcPrice ()
-      // test()
-    }
-  })
-}
-
-// remove from cart
-if(servicesAdd) {
-  servicesAdd.addEventListener('click', (e) => {
-
-    const addItem = e.target.closest('.services-add-item');
-    if(addItem == null) return
-
-    const serviceName = addItem.querySelector('.services-add-name');
-    const accordionItem = servicesWrapper.querySelectorAll('.accordion__item');
-    accordionItem.forEach(item => {
-      const accordionTitle = item.querySelector('.accordion__trigger-title');
-      const BtnAdd = item.querySelector('.accordion__add-services');
-
-      if (serviceName.innerText == accordionTitle.innerText) {
-        BtnAdd.classList.remove('active');
-        BtnAdd.removeAttribute('disabled');
-      }
-    })
-
-    if(e.target.classList.contains('services-add-close')) {
-      addItem.remove()
-    }
-
-    const index = services.findIndex(service => {
-      if(service.title == serviceName.textContent) {
-        return true
-      }
-    })
-    services.splice(index, 1)
+//       servicesAdd.insertAdjacentHTML('beforeend', addItemHtml);
 
 
+//       const addItem = document.querySelectorAll('.services-add-item');
 
-    // calcPrice ()
-    saveToLocalStorage()
-    // test()
-  });
-}
+//       addItem.forEach(item => {
+//         const itemName = item.querySelector('.services-add-name');
+//         if(newService.title === itemName.innerText) {
+//           e.target.setAttribute('disabled', '');
+//           e.target.classList.add('active');
+//         }
+
+//       })
+//       calcPrice ()
+//       test()
+//     }
+//   })
+// }
+
+// // remove from cart
+// if(servicesAdd) {
+//   servicesAdd.addEventListener('click', (e) => {
+
+//     const addItem = e.target.closest('.services-add-item');
+//     if(addItem == null) return
+
+//     const serviceName = addItem.querySelector('.services-add-name');
+//     const accordionItem = servicesWrapper.querySelectorAll('.accordion__item');
+//     accordionItem.forEach(item => {
+//       const accordionTitle = item.querySelector('.accordion__trigger-title');
+//       const BtnAdd = item.querySelector('.accordion__add-services');
+
+//       if (serviceName.innerText == accordionTitle.innerText) {
+//         BtnAdd.classList.remove('active');
+//         BtnAdd.removeAttribute('disabled');
+//       }
+//     })
+
+//     if(e.target.classList.contains('services-add-close')) {
+//       addItem.remove()
+//     }
+
+//     const index = services.findIndex(service => {
+//       if(service.title == serviceName.textContent) {
+//         return true
+//       }
+//     })
+//     services.splice(index, 1)
+
+
+
+//     calcPrice ()
+//     saveToLocalStorage()
+//     test()
+//   });
+// }
 
 // // price calculator
 
@@ -463,101 +463,101 @@ if(servicesAdd) {
 // choiceDays ()
 // calcPrice ()
 
-function saveToLocalStorage() {
-	localStorage.setItem('services', JSON.stringify(services));
-}
+// function saveToLocalStorage() {
+// 	localStorage.setItem('services', JSON.stringify(services));
+// }
 
-// // calendar
+// // // calendar
 
-const calendar = document.querySelector('.calendar');
-const calendarWrap = document.querySelectorAll('.calendar-wrap');
-const calendars = []
+// const calendar = document.querySelector('.calendar');
+// const calendarWrap = document.querySelectorAll('.calendar-wrap');
+// const calendars = []
 
-calendarWrap.forEach(wrap => {
-  const days = wrap.querySelector('.calendar-days');
-  const month = wrap.querySelector('.calendar-month');
-  const month2 = document.querySelector('.calendar-month-2');
-  const year = wrap.querySelector('.calendar-year');
+// calendarWrap.forEach(wrap => {
+//   const days = wrap.querySelector('.calendar-days');
+//   const month = wrap.querySelector('.calendar-month');
+//   const month2 = document.querySelector('.calendar-month-2');
+//   const year = wrap.querySelector('.calendar-year');
 
-  let date = new Date();
-  let currentYears = date.getFullYear();
-  let currentMonth = date.getMonth();
-  let nextMonth = date.getMonth() + 1;
+//   let date = new Date();
+//   let currentYears = date.getFullYear();
+//   let currentMonth = date.getMonth();
+//   let nextMonth = date.getMonth() + 1;
 
-  const months = ["January", "February", "March", "April", "May", "June", "July",
-                  "August", "September", "October", "November", "December"];
+//   const months = ["January", "February", "March", "April", "May", "June", "July",
+//                   "August", "September", "October", "November", "December"];
 
-  const renderCalendar = () => {
-    let firstDayofMonth = new Date(currentYears, currentMonth, 1).getDay(),
-        lastDateofMonth = new Date(currentYears, currentMonth + 1, 0).getDate();
+//   const renderCalendar = () => {
+//     let firstDayofMonth = new Date(currentYears, currentMonth, 1).getDay(),
+//         lastDateofMonth = new Date(currentYears, currentMonth + 1, 0).getDate();
 
-    let nextFirstDayofMonth = new Date(currentYears, nextMonth, 1).getDay(),
-        nextLastDateofMonth = new Date(currentYears, nextMonth + 1, 0).getDate();
+//     let nextFirstDayofMonth = new Date(currentYears, nextMonth, 1).getDay(),
+//         nextLastDateofMonth = new Date(currentYears, nextMonth + 1, 0).getDate();
 
-    let liTag = ''
+//     let liTag = ''
 
-    function cycles (firstDayClass, lastDateClass) {
-      for (let i = firstDayClass; i > 1; i--) {
-        liTag += `<li></li>`
-      }
+//     function cycles (firstDayClass, lastDateClass) {
+//       for (let i = firstDayClass; i > 1; i--) {
+//         liTag += `<li></li>`
+//       }
 
-      if(firstDayClass == 0) {
-        for (let i = 0; i < 6; i++) {
-          liTag += `<li></li>`
-        }
-      }
+//       if(firstDayClass == 0) {
+//         for (let i = 0; i < 6; i++) {
+//           liTag += `<li></li>`
+//         }
+//       }
 
-      for (let i = 1; i <= lastDateClass; i++) {
-        liTag += `<li class="calendar-days-item">${i}</li>`
-      }
-    }
+//       for (let i = 1; i <= lastDateClass; i++) {
+//         liTag += `<li class="calendar-days-item">${i}</li>`
+//       }
+//     }
 
-    if(wrap.classList.contains('calendar-wrap-next')) {
-      cycles (nextFirstDayofMonth, nextLastDateofMonth);
-    }
-    if(wrap.classList.contains('calendar-wrap-prev')) {
-      cycles (firstDayofMonth, lastDateofMonth);
-    }
+//     if(wrap.classList.contains('calendar-wrap-next')) {
+//       cycles (nextFirstDayofMonth, nextLastDateofMonth);
+//     }
+//     if(wrap.classList.contains('calendar-wrap-prev')) {
+//       cycles (firstDayofMonth, lastDateofMonth);
+//     }
 
-    month.textContent = `${months[currentMonth]}`;
-    month2.textContent = `${months[nextMonth]}`;
-    year.textContent = currentYears;
-    days.innerHTML = liTag;
+//     month.textContent = `${months[currentMonth]}`;
+//     month2.textContent = `${months[nextMonth]}`;
+//     year.textContent = currentYears;
+//     days.innerHTML = liTag;
 
-  }
-  renderCalendar()
-  if(calendar != null) {
-    calendar.addEventListener('click', (e) => {
+//   }
+//   renderCalendar()
+//   if(calendar != null) {
+//     calendar.addEventListener('click', (e) => {
 
-      if(e.target.classList.contains('btn-calendar-next')) {
+//       if(e.target.classList.contains('btn-calendar-next')) {
 
-        if(currentMonth == 11) {
-          currentMonth = -1
-        }
-        if(nextMonth == 11) {
-          nextMonth = -1
-        }
+//         if(currentMonth == 11) {
+//           currentMonth = -1
+//         }
+//         if(nextMonth == 11) {
+//           nextMonth = -1
+//         }
 
-        month.textContent = months[++currentMonth];
-        month2.textContent = months[++nextMonth];
-        renderCalendar()
-      }
+//         month.textContent = months[++currentMonth];
+//         month2.textContent = months[++nextMonth];
+//         renderCalendar()
+//       }
 
-      if(e.target.classList.contains('btn-calendar-prev')) {
-        if(currentMonth == 0) {
-          currentMonth = 12
-        }
-        if(nextMonth == 0) {
-          nextMonth = 12
-        }
-        month.textContent = months[--currentMonth];
-        month2.textContent = months[--nextMonth];
-        renderCalendar()
-      }
+//       if(e.target.classList.contains('btn-calendar-prev')) {
+//         if(currentMonth == 0) {
+//           currentMonth = 12
+//         }
+//         if(nextMonth == 0) {
+//           nextMonth = 12
+//         }
+//         month.textContent = months[--currentMonth];
+//         month2.textContent = months[--nextMonth];
+//         renderCalendar()
+//       }
 
-    })
-  }
-})
+//     })
+//   }
+// })
 
 // function choiceDays () {
 
