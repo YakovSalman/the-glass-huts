@@ -594,12 +594,9 @@ function choiceDays () {
         const currentWrap = variableName.closest('.calendar-wrap');
         const currentMonth = currentWrap.querySelector('.calendar-month');
         const currentYears = currentWrap.querySelector('.calendar-year');
-        const dateFirst = new Date(`${variableName.textContent} ${currentYears.textContent} ${currentMonth.textContent}`);
-
-
+        const dateFirst = new Date(`${parseInt(variableName.textContent)} ${currentYears.textContent} ${currentMonth.textContent}`);
         return dateFirst;
       }
-
       const diffDate = selectedDate(itemLast) - selectedDate(itemFirst);
       const daysLeft = Math.ceil(diffDate / 1000 / 60 / 60 / 24);
       function formatTime(data) {
@@ -611,12 +608,11 @@ function choiceDays () {
       }
 
 
+
       CheckIn.value = `${formatTime(selectedDate(itemFirst))}`;
       CheckOut.value = `${formatTime(selectedDate(itemLast))}`;
-
       checkInDate['valueDate'] = CheckIn.value
       checkOutDate['valueDate'] = CheckOut.value
-
 
       const result = 3200 * daysLeft;
 
