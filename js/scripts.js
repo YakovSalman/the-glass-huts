@@ -677,7 +677,7 @@ calendarWrap.forEach(wrap => {
 
 
 // const fullPrice = document.querySelector('.services-price');
-if(calendar != null) {
+if(calendar) {
   calendar.addEventListener('click', (e) => {
     const servicesAddLease = servicesAdd.querySelector('.services-add-item-lease');
     const activeEl =  calendar.querySelectorAll('.active');
@@ -700,19 +700,19 @@ if(calendar != null) {
       }
     }
 
-    if(calendar != null) {
-      const calendarDaysItem = calendar.querySelectorAll('.calendar-days-item');
+    // if(calendar != null) {
+    //   const calendarDaysItem = calendar.querySelectorAll('.calendar-days-item');
 
-      calendarDaysItem.forEach(item => {
-        if (activeEl.length == 2) {
-          if(!item.classList.contains('active')) {
-            item.style.pointerEvents = 'none';
-          }
-        } else {
-          item.style.pointerEvents = 'auto';
-        }
-      })
-    }
+    //   calendarDaysItem.forEach(item => {
+    //     if (activeEl.length == 2) {
+    //       if(!item.classList.contains('active')) {
+    //         item.style.pointerEvents = 'none';
+    //       }
+    //     } else {
+    //       item.style.pointerEvents = 'auto';
+    //     }
+    //   })
+    // }
   })
 }
 
