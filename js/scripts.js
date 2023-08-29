@@ -675,9 +675,8 @@ calendarWrap.forEach(wrap => {
 
 // }
 
-const servicesAdd = document.querySelector('.services-add');
-// const fullPrice = document.querySelector('.services-price');
-if(calendar) {
+const fullPrice = document.querySelector('.services-price');
+if(calendar != null) {
   calendar.addEventListener('click', (e) => {
     const servicesAddLease = servicesAdd.querySelector('.services-add-item-lease');
     const activeEl =  calendar.querySelectorAll('.active');
