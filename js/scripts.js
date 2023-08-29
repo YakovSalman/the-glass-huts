@@ -1,4 +1,3 @@
-// Custom Scripts
 // Custom scripts
 
 const menu = document.querySelector('.menu');
@@ -286,12 +285,10 @@ formData.forEach(form => {
 
   }
 
-
   const guestsPayment = document.querySelector('.guests-payment')
   if(guestsPayment) {
     guestsPayment.value = guests.value
   }
-
 
   function saveToLocalStorageGuests() {
     localStorage.setItem('guests', JSON.stringify(guests));
@@ -303,169 +300,169 @@ formData.forEach(form => {
 const formstNumber = (x) =>  x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
 const formstNumber2 = (x) => x.toString().replace('.', '');
 
-
 const servicesWrapper = document.querySelector('.accordion-services')
 const servicesAdd = document.querySelector('.services-add');
 const servicesPayment = document.querySelector('.services-add-payment')
 let services = [];
 
-// if(localStorage.getItem('services')) {
-//   services = JSON.parse(localStorage.getItem('services'));
-// }
+if(localStorage.getItem('services')) {
+  services = JSON.parse(localStorage.getItem('services'));
+}
 
-// test()
+test()
 
-// function test() {
-//   if(servicesAdd) {
-//     if(Array.from(servicesAdd.children).length < 1) {
-//       services = []
-//       localStorage.removeItem('services')
-//     }
-//   }
-// }
+function test() {
+  if(servicesAdd) {
+    if(Array.from(servicesAdd.children).length < 1) {
+      services = []
+      localStorage.removeItem('services')
+    }
+  }
+}
 
-// services.forEach(service => {
+services.forEach(service => {
 
-//   if(servicesPayment) {
-//     const addItemHtml = `<div class="services-add-item">
-//                             <div class="services-add-name">${service.title}</div>
-//                             <div class="services-add-price">${service.price}</div>
-//                           </div>`
+  if(servicesPayment) {
+    const addItemHtml = `<div class="services-add-item">
+                            <div class="services-add-name">${service.title}</div>
+                            <div class="services-add-price">${service.price}</div>
+                          </div>`
 
-//     servicesPayment.insertAdjacentHTML('beforeend', addItemHtml);
-//   }
+    servicesPayment.insertAdjacentHTML('beforeend', addItemHtml);
+  }
 
-// })
+})
 
-// if(servicesWrapper != null) {
-//   servicesWrapper.addEventListener('click', (e) => {
-//     if (e.target.classList.contains('accordion__add-services')) {
-//       const servicesItem = e.target.closest('.accordion__item');
-//       const servicesTitle = servicesItem.querySelector('.accordion__trigger-title');
-//       const servicesPrice = servicesItem.querySelector('.accordion__trigger-subtitle');
+if(servicesWrapper != null) {
+  servicesWrapper.addEventListener('click', (e) => {
+    if (e.target.classList.contains('accordion__add-services')) {
+      const servicesItem = e.target.closest('.accordion__item');
+      const servicesTitle = servicesItem.querySelector('.accordion__trigger-title');
+      const servicesPrice = servicesItem.querySelector('.accordion__trigger-subtitle');
 
-//       const newService = {
-//         title: servicesTitle.innerText,
-//         price: servicesPrice.innerText
-//       }
-//       services.push(newService)
-//       saveToLocalStorage()
+      const newService = {
+        title: servicesTitle.innerText,
+        price: servicesPrice.innerText
+      }
+      services.push(newService)
+      saveToLocalStorage()
 
-//       const addItemHtml = `<div class="services-add-item">
-//                                 <div class="services-add-name">${newService.title}</div>
-//                                 <div class="services-add-price">${newService.price}</div>
-//                                 <button class="services-add-close">
-//                                     <i class="fa-solid fa-xmark services-icon"></i>
-//                                 </button>
-//                               </div>`
+      const addItemHtml = `<div class="services-add-item">
+                                <div class="services-add-name">${newService.title}</div>
+                                <div class="services-add-price">${newService.price}</div>
+                                <button class="services-add-close">
+                                    <i class="fa-solid fa-xmark services-icon"></i>
+                                </button>
+                              </div>`
 
-//       servicesAdd.insertAdjacentHTML('beforeend', addItemHtml);
-
-
-//       const addItem = document.querySelectorAll('.services-add-item');
-
-//       addItem.forEach(item => {
-//         const itemName = item.querySelector('.services-add-name');
-//         if(newService.title === itemName.innerText) {
-//           e.target.setAttribute('disabled', '');
-//           e.target.classList.add('active');
-//         }
-
-//       })
-//       calcPrice ()
-//       test()
-//     }
-//   })
-// }
-
-// // remove from cart
-// if(servicesAdd) {
-//   servicesAdd.addEventListener('click', (e) => {
-
-//     const addItem = e.target.closest('.services-add-item');
-//     if(addItem == null) return
-
-//     const serviceName = addItem.querySelector('.services-add-name');
-//     const accordionItem = servicesWrapper.querySelectorAll('.accordion__item');
-//     accordionItem.forEach(item => {
-//       const accordionTitle = item.querySelector('.accordion__trigger-title');
-//       const BtnAdd = item.querySelector('.accordion__add-services');
-
-//       if (serviceName.innerText == accordionTitle.innerText) {
-//         BtnAdd.classList.remove('active');
-//         BtnAdd.removeAttribute('disabled');
-//       }
-//     })
-
-//     if(e.target.classList.contains('services-add-close')) {
-//       addItem.remove()
-//     }
-
-//     const index = services.findIndex(service => {
-//       if(service.title == serviceName.textContent) {
-//         return true
-//       }
-//     })
-//     services.splice(index, 1)
+      servicesAdd.insertAdjacentHTML('beforeend', addItemHtml);
 
 
+      const addItem = document.querySelectorAll('.services-add-item');
 
-//     calcPrice ()
-//     saveToLocalStorage()
-//     test()
-//   });
-// }
+      addItem.forEach(item => {
+        const itemName = item.querySelector('.services-add-name');
+        if(newService.title === itemName.innerText) {
+          e.target.setAttribute('disabled', '');
+          e.target.classList.add('active');
+        }
 
-// // price calculator
+      })
+      calcPrice ()
+      test()
+    }
+  })
+}
 
-// function calcPrice () {
-//   const servicesItem = document.querySelectorAll('.services-add-item');
-//   const fullPrice = document.querySelector('.services-price');
+// remove from cart
+if(servicesAdd) {
+  servicesAdd.addEventListener('click', (e) => {
 
-//   let totalPrice = 0;
+    const addItem = e.target.closest('.services-add-item');
+    if(addItem == null) return
 
-//   let FullPrice = {}
+    const serviceName = addItem.querySelector('.services-add-name');
+    const accordionItem = servicesWrapper.querySelectorAll('.accordion__item');
+    accordionItem.forEach(item => {
+      const accordionTitle = item.querySelector('.accordion__trigger-title');
+      const BtnAdd = item.querySelector('.accordion__add-services');
 
-//   if(localStorage.getItem('FullPrice')) {
-//     FullPrice = JSON.parse(localStorage.getItem('FullPrice'))
-//   }
+      if (serviceName.innerText == accordionTitle.innerText) {
+        BtnAdd.classList.remove('active');
+        BtnAdd.removeAttribute('disabled');
+      }
+    })
 
-//   servicesItem.forEach(item => {
+    if(e.target.classList.contains('services-add-close')) {
+      addItem.remove()
+    }
 
-//     const price = item.querySelector('.services-add-price');
-//     const formstPrice = parseInt(formstNumber2(price.innerText));
+    const index = services.findIndex(service => {
+      if(service.title == serviceName.textContent) {
+        return true
+      }
+    })
+    services.splice(index, 1)
 
-//     totalPrice += formstPrice;
 
-//     const newPrice = {
-//       price: totalPrice
-//     }
-//     FullPrice['price'] = `${totalPrice}`
 
-//     fullPrice.textContent = `${FullPrice.price}kr`;
+    calcPrice ()
+    saveToLocalStorage()
+    test()
+  });
+}
 
-//     fullPrice.textContent = `${formstNumber(newPrice.price)}kr`;
-//   })
+// price calculator
 
-//   if(fullPrice) {
-//     if(servicesItem.length < 1) {
-//       fullPrice.textContent = `0`;
-//     }
-//   }
+function calcPrice () {
+  const servicesItem = document.querySelectorAll('.services-add-item');
+  const fullPrice = document.querySelector('.services-price');
 
-//   function saveToLocalStoragePrice() {
-//     localStorage.setItem('FullPrice', JSON.stringify(FullPrice));
-//   }
+  let totalPrice = 0;
 
-//   saveToLocalStoragePrice()
-// }
+  let FullPrice = {}
 
-// choiceDays ()
-// calcPrice ()
+  if(localStorage.getItem('FullPrice')) {
+    FullPrice = JSON.parse(localStorage.getItem('FullPrice'))
+  }
 
-// function saveToLocalStorage() {
-// 	localStorage.setItem('services', JSON.stringify(services));
-// }
+  servicesItem.forEach(item => {
+
+    const price = item.querySelector('.services-add-price');
+    const formstPrice = parseInt(formstNumber2(price.innerText));
+
+    totalPrice += formstPrice;
+
+    const newPrice = {
+      price: totalPrice
+    }
+    FullPrice['price'] = `${totalPrice}`
+
+    fullPrice.textContent = `${FullPrice.price}kr`;
+
+    fullPrice.textContent = `${formstNumber(newPrice.price)}kr`;
+  })
+
+  if(fullPrice) {
+    if(servicesItem.length < 1) {
+      fullPrice.textContent = `0`;
+    }
+  }
+
+
+  function saveToLocalStoragePrice() {
+    localStorage.setItem('FullPrice', JSON.stringify(FullPrice));
+  }
+
+  saveToLocalStoragePrice()
+}
+
+choiceDays ()
+calcPrice ()
+
+function saveToLocalStorage() {
+	localStorage.setItem('services', JSON.stringify(services));
+}
 
 // calendar
 
@@ -557,163 +554,124 @@ calendarWrap.forEach(wrap => {
 
     })
   }
+
+
 })
 
-// function choiceDays () {
+function choiceDays () {
 
-//   const calendar = document.querySelector('.calendar')
-//   const servicesAdd = document.querySelector('.services-add');
-//   const servicesAddPayment = document.querySelector('.services-add-payment');
+  const calendar = document.querySelector('.calendar')
+  const servicesAdd = document.querySelector('.services-add');
+  const servicesAddPayment = document.querySelector('.services-add-payment');
 
-//   let newLease = {}
-//   let checkInDate = {}
-//   let checkOutDate = {}
+  let newLease = {}
+  let checkInDate = {}
+  let checkOutDate = {}
 
-//   if(localStorage.getItem('newLease')) {
-//     newLease = JSON.parse(localStorage.getItem('newLease'))
-//   }
-//   if(localStorage.getItem('checkInDate')) {
-//     checkInDate = JSON.parse(localStorage.getItem('checkInDate'))
-//   }
-//   if(localStorage.getItem('checkOutDate')) {
-//     checkOutDate = JSON.parse(localStorage.getItem('checkOutDate'))
-//   }
+  if(localStorage.getItem('newLease')) {
+    newLease = JSON.parse(localStorage.getItem('newLease'))
+  }
+  if(localStorage.getItem('checkInDate')) {
+    checkInDate = JSON.parse(localStorage.getItem('checkInDate'))
+  }
+  if(localStorage.getItem('checkOutDate')) {
+    checkOutDate = JSON.parse(localStorage.getItem('checkOutDate'))
+  }
 
-//   const calendarWrapper = document.querySelector('.calendar-wrapper')
-//   if (calendarWrapper != null) {
-//     const itemActive = calendarWrapper.querySelectorAll('.calendar-days-item.active')
+  const calendarWrapper = document.querySelector('.calendar-wrapper')
+  if (calendarWrapper != null) {
+    const itemActive = calendarWrapper.querySelectorAll('.calendar-days-item.active')
 
-//     const CheckIn = document.getElementById('CheckIn');
-//     const CheckOut = document.getElementById('CheckOut');
+    const CheckIn = document.getElementById('CheckIn');
+    const CheckOut = document.getElementById('CheckOut');
 
-//     const itemActiveArray = Array.from(itemActive);
-//     if(itemActiveArray.length > 1) {
-//       const itemFirst = itemActiveArray.shift();
-//       const itemLast = itemActiveArray.shift();
+    const itemActiveArray = Array.from(itemActive);
+    if(itemActiveArray.length > 1) {
+      const itemFirst = itemActiveArray.shift();
+      const itemLast = itemActiveArray.shift();
 
-//       function selectedDate (variableName) {
-//         const currentWrap = variableName.closest('.calendar-wrap');
-//         const currentMonth = currentWrap.querySelector('.calendar-month');
-//         const currentYears = currentWrap.querySelector('.calendar-year');
-//         const dateFirst = new Date(`${variableName.textContent} ${currentYears.textContent} ${currentMonth.textContent}`);
-
-//         console.log(`${dateFirst} variableName`);
-
-//         return dateFirst;
-//       }
-
-//       const diffDate = selectedDate(itemLast) - selectedDate(itemFirst);
-//       const daysLeft = Math.ceil(diffDate / 1000 / 60 / 60 / 24);
-//       function formatTime(data) {
-//         const month = data.getMonth() + 1;
-//         const daty = data.getDate();
-//         const year = data.getFullYear();
-
-//         return `${month}/${daty}/${year}`;
-//       }
-//       console.log(daysLeft);
-
-//       CheckIn.value = `${formatTime(selectedDate(itemFirst))}`;
-//       CheckOut.value = `${formatTime(selectedDate(itemLast))}`;
-
-//       checkInDate['valueDate'] = CheckIn.value
-//       checkOutDate['valueDate'] = CheckOut.value
+      function selectedDate (variableName) {
+        const currentWrap = variableName.closest('.calendar-wrap');
+        const currentMonth = currentWrap.querySelector('.calendar-month');
+        const currentYears = currentWrap.querySelector('.calendar-year');
+        const dateFirst = new Date(`${variableName.textContent} ${currentYears.textContent} ${currentMonth.textContent}`);
 
 
-//       const result = 3200 * daysLeft;
+        return dateFirst;
+      }
 
-//       newLease['title'] = `${daysLeft}`
-//       newLease['price'] = `${result}`
+      const diffDate = selectedDate(itemLast) - selectedDate(itemFirst);
+      const daysLeft = Math.ceil(diffDate / 1000 / 60 / 60 / 24);
+      function formatTime(data) {
+        const month = data.getMonth() + 1;
+        const daty = data.getDate();
+        const year = data.getFullYear();
 
-
-//       saveToLocalStorageLease()
-//       saveToLocalStorageCheckInDate()
-//       saveToLocalStorageCheckOutDate()
-
-//       const servicesAddLeaseHtml = `<div class="services-add-item services-add-item-lease">
-//                                     <div class="services-add-name">3.200kr x ${daysLeft} nights</div>
-//                                     <div class="services-add-price">${formstNumber(result)}kr</div>
-//                                   </div>`
-
-//       servicesAdd.insertAdjacentHTML('afterbegin', servicesAddLeaseHtml);
-//       calendar.classList.remove('active');
-//       calcPrice()
-
-//       function saveToLocalStorageLease() {
-//         localStorage.setItem('newLease', JSON.stringify(newLease));
-//       }
-//       function saveToLocalStorageCheckInDate() {
-//         localStorage.setItem('checkInDate', JSON.stringify(checkInDate));
-//       }
-//       function saveToLocalStorageCheckOutDate() {
-//         localStorage.setItem('checkOutDate', JSON.stringify(checkOutDate));
-//       }
-//     }
-//   }
-
-//   if(servicesAddPayment) {
-//     const servicesAddLeaseHtml1 = `<div class="services-add-item services-add-item-lease">
-//       <div class="services-add-name">3.200kr x ${newLease.title} nights</div>
-//       <div class="services-add-price">${formstNumber(newLease.price)}kr</div>
-//       </div>`
-
-//       servicesAddPayment.insertAdjacentHTML('afterbegin', servicesAddLeaseHtml1);
-//   }
+        return `${month}/${daty}/${year}`;
+      }
 
 
-//   const formDataPayment = document.querySelector('.form-data-payment')
-//   if(formDataPayment) {
-//     function renderDate(input, array) {
-//       input = document.getElementById(input);
+      CheckIn.value = `${formatTime(selectedDate(itemFirst))}`;
+      CheckOut.value = `${formatTime(selectedDate(itemLast))}`;
 
-//       input.value = array.valueDate
-//     }
-//       renderDate('checkInPayment', checkInDate)
-//       renderDate('checkOutPayment', checkOutDate)
-//   }
+      checkInDate['valueDate'] = CheckIn.value
+      checkOutDate['valueDate'] = CheckOut.value
 
 
-// }
+      const result = 3200 * daysLeft;
 
-// const fullPrice = document.querySelector('.services-price');
-// if(calendar != null) {
-//   calendar.addEventListener('click', (e) => {
-//     const servicesAddLease = servicesAdd.querySelector('.services-add-item-lease');
-//     const activeEl =  calendar.querySelectorAll('.active');
+      newLease['title'] = `${daysLeft}`
+      newLease['price'] = `${result}`
 
-//     if (e.target.classList.contains('calendar-days-item')){
-//       e.target.classList.toggle('active');
-//       const activeEl =  calendar.querySelectorAll('.active');
 
-//       if (activeEl.length > 2) {
-//         e.target.classList.remove('active');
-//       }
+      saveToLocalStorageLease()
+      saveToLocalStorageCheckInDate()
+      saveToLocalStorageCheckOutDate()
 
-//       if(activeEl.length >= 2) {
-//         choiceDays ()
-//       } else {
-//         if(servicesAddLease == null) return
+      const servicesAddLeaseHtml = `<div class="services-add-item services-add-item-lease">
+                                    <div class="services-add-name">3.200kr x ${daysLeft} nights</div>
+                                    <div class="services-add-price">${formstNumber(result)}kr</div>
+                                  </div>`
 
-//         servicesAddLease.remove();
-//         calcPrice()
-//       }
-//     }
+      servicesAdd.insertAdjacentHTML('afterbegin', servicesAddLeaseHtml);
+      calendar.classList.remove('active');
+      calcPrice()
 
-//     if(calendar != null) {
-//       const calendarDaysItem = calendar.querySelectorAll('.calendar-days-item');
+      function saveToLocalStorageLease() {
+        localStorage.setItem('newLease', JSON.stringify(newLease));
+      }
+      function saveToLocalStorageCheckInDate() {
+        localStorage.setItem('checkInDate', JSON.stringify(checkInDate));
+      }
+      function saveToLocalStorageCheckOutDate() {
+        localStorage.setItem('checkOutDate', JSON.stringify(checkOutDate));
+      }
+    }
+  }
 
-//       calendarDaysItem.forEach(item => {
-//         if (activeEl.length == 2) {
-//           if(!item.classList.contains('active')) {
-//             item.style.pointerEvents = 'none';
-//           }
-//         } else {
-//           item.style.pointerEvents = 'auto';
-//         }
-//       })
-//     }
-//   })
-// }
+  if(servicesAddPayment) {
+    const servicesAddLeaseHtml1 = `<div class="services-add-item services-add-item-lease">
+      <div class="services-add-name">3.200kr x ${newLease.title} nights</div>
+      <div class="services-add-price">${formstNumber(newLease.price)}kr</div>
+      </div>`
+
+      servicesAddPayment.insertAdjacentHTML('afterbegin', servicesAddLeaseHtml1);
+  }
+
+
+  const formDataPayment = document.querySelector('.form-data-payment')
+  if(formDataPayment) {
+    function renderDate(input, array) {
+      input = document.getElementById(input);
+
+      input.value = array.valueDate
+    }
+      renderDate('checkInPayment', checkInDate)
+      renderDate('checkOutPayment', checkOutDate)
+  }
+
+
+}
 
 if(calendar != null) {
   calendar.addEventListener('click', (e) => {
@@ -723,18 +681,18 @@ if(calendar != null) {
       e.target.classList.toggle('active');
       const activeEl = calendar.querySelectorAll('.active');
 
-      // if (activeEl.length > 2) {
-      //   e.target.classList.remove('active');
-      // }
+      if (activeEl.length > 2) {
+        e.target.classList.remove('active');
+      }
 
-      // if(activeEl.length >= 2) {
-      //   // choiceDays ()
-      // } else {
-      //   if(servicesAddLease == null) return
+      if(activeEl.length >= 2) {
+        choiceDays ()
+      } else {
+        if(servicesAddLease == null) return
 
-      //   servicesAddLease.remove();
-      //   // calcPrice()
-      // }
+        servicesAddLease.remove();
+        calcPrice()
+      }
     }
   })
 }
@@ -1257,5 +1215,4 @@ if(btnTransparen) {
     scrollEl('.connection__inner')
   })
 }
-
 
