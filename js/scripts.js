@@ -723,18 +723,18 @@ if(calendar != null) {
       e.target.classList.toggle('active');
       const activeEl = calendar.querySelectorAll('.active');
 
-      if (activeEl.length > 2) {
-        e.target.classList.remove('active');
-      }
+      // if (activeEl.length > 2) {
+      //   e.target.classList.remove('active');
+      // }
 
-      if(activeEl.length >= 2) {
-        // choiceDays ()
-      } else {
-        if(servicesAddLease == null) return
+      // if(activeEl.length >= 2) {
+      //   // choiceDays ()
+      // } else {
+      //   if(servicesAddLease == null) return
 
-        servicesAddLease.remove();
-        // calcPrice()
-      }
+      //   servicesAddLease.remove();
+      //   // calcPrice()
+      // }
     }
   })
 }
