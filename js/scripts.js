@@ -675,29 +675,29 @@ calendarWrap.forEach(wrap => {
 
 // }
 
-const fullPrice = document.querySelector('.services-price');
-if(calendar != null) {
-  calendar.addEventListener('click', (e) => {
-    const servicesAddLease = servicesAdd.querySelector('.services-add-item-lease');
-    const activeEl =  calendar.querySelectorAll('.active');
+// // const fullPrice = document.querySelector('.services-price');
+// if(calendar != null) {
+//   calendar.addEventListener('click', (e) => {
+//     const servicesAddLease = servicesAdd.querySelector('.services-add-item-lease');
+//     const activeEl =  calendar.querySelectorAll('.active');
 
-    if (e.target.classList.contains('calendar-days-item')){
-      e.target.classList.toggle('active');
-      const activeEl =  calendar.querySelectorAll('.active');
+//     if (e.target.classList.contains('calendar-days-item')){
+//       e.target.classList.toggle('active');
+//       const activeEl =  calendar.querySelectorAll('.active');
 
-      if (activeEl.length > 2) {
-        e.target.classList.remove('active');
-      }
+//       if (activeEl.length > 2) {
+//         e.target.classList.remove('active');
+//       }
 
-      if(activeEl.length >= 2) {
-        // choiceDays ()
-      } else {
-        if(servicesAddLease == null) return
+//       if(activeEl.length >= 2) {
+//         // choiceDays ()
+//       } else {
+//         if(servicesAddLease == null) return
 
-        servicesAddLease.remove();
-        // calcPrice()
-      }
-    }
+//         servicesAddLease.remove();
+//         // calcPrice()
+//       }
+//     }
 
     // if(calendar != null) {
     //   const calendarDaysItem = calendar.querySelectorAll('.calendar-days-item');
