@@ -299,15 +299,15 @@ formData.forEach(form => {
 });
 
 
-// // servises data
-// const formstNumber = (x) =>  x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
-// const formstNumber2 = (x) => x.toString().replace('.', '');
+// servises data
+const formstNumber = (x) =>  x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.');
+const formstNumber2 = (x) => x.toString().replace('.', '');
 
 
-// const servicesWrapper = document.querySelector('.accordion-services')
-// const servicesAdd = document.querySelector('.services-add');
-// const servicesPayment = document.querySelector('.services-add-payment')
-// let services = [];
+const servicesWrapper = document.querySelector('.accordion-services')
+const servicesAdd = document.querySelector('.services-add');
+const servicesPayment = document.querySelector('.services-add-payment')
+let services = [];
 
 // if(localStorage.getItem('services')) {
 //   services = JSON.parse(localStorage.getItem('services'));
