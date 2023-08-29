@@ -675,7 +675,7 @@ calendarWrap.forEach(wrap => {
 
 // }
 
-
+const servicesAdd = document.querySelector('.services-add');
 // const fullPrice = document.querySelector('.services-price');
 if(calendar) {
   calendar.addEventListener('click', (e) => {
