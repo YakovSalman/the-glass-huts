@@ -598,8 +598,9 @@ function choiceDays () {
         // const currentYears = currentWrap.querySelector('.calendar-year');
         // const dateFirst = new Date(`${parseInt(variableName.textContent)}, ${parseInt(currentYears.textContent)}, ${currentMonth.textContent}`);
 
+        let date1 = new Date(2002,7,4); // example
+        date1 = Date.parse(date1);
 
-        const date1 = new Date('10, 02, 2023');
         const temporary = document.querySelector('.temporary');
         temporary.insertAdjacentText('afterbegin', date1);
 
