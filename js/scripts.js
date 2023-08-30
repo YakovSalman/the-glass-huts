@@ -590,17 +590,20 @@ function choiceDays () {
       const itemFirst = itemActiveArray.shift();
       const itemLast = itemActiveArray.shift();
 
-      const date1 = new Date;
-      const temporary = document.querySelector('.temporary')
-      temporary.insertAdjacentText('afterbegin', date1)   
+
 
       function selectedDate (variableName) {	      
-        const currentWrap = variableName.closest('.calendar-wrap');
-        const currentMonth = currentWrap.querySelector('.calendar-month');
-        const currentYears = currentWrap.querySelector('.calendar-year');
-        const dateFirst = new Date(`${parseInt(variableName.textContent)} ${parseInt(currentYears.textContent)} ${currentMonth.textContent}`);
+        // const currentWrap = variableName.closest('.calendar-wrap');
+        // const currentMonth = currentWrap.querySelector('.calendar-month');
+        // const currentYears = currentWrap.querySelector('.calendar-year');
+        // const dateFirst = new Date(`${parseInt(variableName.textContent)} ${parseInt(currentYears.textContent)} ${currentMonth.textContent}`);
+	
+	      const date1 = new Date;
+	      const temporary = document.querySelector('.temporary')
+	      temporary.insertAdjacentText('afterbegin', date1)   
+
 	      
-        return dateFirst;
+        // return dateFirst;
       }
       const diffDate = selectedDate(itemLast) - selectedDate(itemFirst);
       const daysLeft = Math.ceil(diffDate / 1000 / 60 / 60 / 24);
