@@ -604,9 +604,9 @@ function choiceDays () {
 
 
         // const dateFirst = new Date(`${year}-${month}-${day}`);
-
-        // const temporary = document.querySelector('.temporary');
-        // temporary.insertAdjacentText('afterbegin', date1);
+        const inner = itemFirst.textContent
+        const temporary = document.querySelector('.temporary');
+        temporary.insertAdjacentText('afterbegin', inner);
         const dateFirst = new Date('10 September 2023');
 
         return dateFirst;
