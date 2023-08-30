@@ -591,7 +591,7 @@ function choiceDays () {
       const itemLast = itemActiveArray.shift();
 
 
-       function selectedDate (variableName) {
+             function selectedDate (variableName) {
         const currentWrap = variableName.closest('.calendar-wrap');
         const currentMonth = currentWrap.querySelector('.calendar-month');
         const currentYears = currentWrap.querySelector('.calendar-year');
@@ -604,12 +604,14 @@ function choiceDays () {
 
         // const dateFirst = new Date(`${year}-${month}-${day}`);
 
-        const dateFirst = new Date(`${parseInt(variableName.textContent)}, ${currentMonth.textContent}`);
+        // const dateFirst = new Date(`${parseInt(variableName.textContent)}, ${currentMonth.textContent}`);
 
         const inner = itemFirst.textContent
         const temporary = document.querySelector('.temporary');
         temporary.insertAdjacentText('afterbegin', inner);
         // const dateFirst = new Date('10 September 2023');
+        const dateFirst = new Date(day + month + year);
+
 
         return dateFirst;
       }
