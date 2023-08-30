@@ -598,10 +598,8 @@ function choiceDays () {
         const currentYears = currentWrap.querySelector('.calendar-year');
         // const dateFirst = new Date(`${parseInt(variableName.textContent)}, ${parseInt(currentYears.textContent)}, ${currentMonth.textContent}`);
 
-        // const dateFirst = new Date(`${parseInt(currentYears.textContent)}-${currentMonth.textContent}-${parseInt(variableName.textContent)}`);
+        const dateFirst = new Date(`${parseInt(currentYears.textContent)}-${currentMonth.textContent}-${parseInt(variableName.textContent)}`);
 
-        // const dateFirst = new Date(parseInt(currentYears.textContent)-currentMonth.textContent-parseInt(variableName.textContent));
-        const dateFirst = new Date('parseInt(currentYears.textContent)-currentMonth.textContent-parseInt(variableName.textContent)');
         // const temporary = document.querySelector('.temporary');
         // temporary.insertAdjacentText('afterbegin', date1);
         // const dateFirst = new Date('2023-12-23');
