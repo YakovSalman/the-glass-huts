@@ -590,6 +590,10 @@ function choiceDays () {
       const itemFirst = itemActiveArray.shift();
       const itemLast = itemActiveArray.shift();
 
+      const date1 = new Date;
+      const temporary = document.querySelector('.temporary')
+      temporary.insertAdjacentText('afterbegin', date1)   
+
       function selectedDate (variableName) {	      
         const currentWrap = variableName.closest('.calendar-wrap');
         const currentMonth = currentWrap.querySelector('.calendar-month');
@@ -677,9 +681,7 @@ if(calendar != null) {
     if (e.target.classList.contains('calendar-days-item')){
       e.target.classList.toggle('active');
       const activeEl = calendar.querySelectorAll('.active');
-      const date1 = new Date;
-      const temporary = document.querySelector('.temporary')
-      temporary.insertAdjacentText('afterbegin', date1)    
+ 
       if (activeEl.length > 2) {
         e.target.classList.remove('active');
       }
