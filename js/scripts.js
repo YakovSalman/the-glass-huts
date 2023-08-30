@@ -599,10 +599,10 @@ function choiceDays () {
         // const dateFirst = new Date(`${parseInt(variableName.textContent)}, ${parseInt(currentYears.textContent)}, ${currentMonth.textContent}`);
 
 	const temporary = document.querySelector('.temporary');
-        let date1 = new Date(2002,7,4);
-        temporary.insertAdjacentText('afterbegin', date1);
+        const dateFirst = new Date(2002-2-3);
+        temporary.insertAdjacentText('afterbegin', dateFirst);
 
-        // return dateFirst;
+        return dateFirst;
       }
       const diffDate = selectedDate(itemLast) - selectedDate(itemFirst);
       const daysLeft = Math.ceil(diffDate / 1000 / 60 / 60 / 24);
