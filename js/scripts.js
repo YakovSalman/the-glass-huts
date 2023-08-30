@@ -604,7 +604,7 @@ function choiceDays () {
         const day = parseInt(variableName.textContent);
 
 
-        const dateFirst = new Date(year, month, day);
+        const dateFirst = new Date(`${year}-${month}-${day}`);
 
 
         // const dateFirst = new Date(`${year}-${month}-${day}`);
