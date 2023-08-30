@@ -609,7 +609,7 @@ function choiceDays () {
         const inner = itemFirst.textContent
         const temporary = document.querySelector('.temporary');
         temporary.insertAdjacentText('afterbegin', inner);
-        const dateFirst = new Date(`${day} September 2023`)
+        const dateFirst = new Date(`${day} ${month} 2023`)
         // const dateFirst = new Date(year + month + day);
 
 
