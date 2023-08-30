@@ -595,6 +595,10 @@ function choiceDays () {
         const currentMonth = currentWrap.querySelector('.calendar-month');
         const currentYears = currentWrap.querySelector('.calendar-year');
         const dateFirst = new Date(`${parseInt(variableName.textContent)} ${parseInt(currentYears.textContent)} ${currentMonth.textContent}`);
+
+	const temporary = document.querySelector('.temporary')
+        temporary.textContent = dateFirst
+	      
         return dateFirst;
       }
       const diffDate = selectedDate(itemLast) - selectedDate(itemFirst);
