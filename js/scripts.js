@@ -592,10 +592,11 @@ function choiceDays () {
 
 
 
-           function selectedDate (variableName) {
+      function selectedDate (variableName) {
         const currentWrap = variableName.closest('.calendar-wrap');
         const currentMonth = currentWrap.querySelector('.calendar-month');
         const currentYears = currentWrap.querySelector('.calendar-year');
+
         // const dateFirst = new Date(`${parseInt(variableName.textContent)}, ${parseInt(currentYears.textContent)}, ${currentMonth.textContent}`);
 
         const year = parseInt(currentYears.textContent);
@@ -603,7 +604,10 @@ function choiceDays () {
         const day = parseInt(variableName.textContent);
 
 
-        const dateFirst = new Date(`${year}-${month}-${day}`);
+        const dateFirst = new Date(year, month, day);
+
+
+        // const dateFirst = new Date(`${year}-${month}-${day}`);
         const inner = itemFirst.textContent
         const temporary = document.querySelector('.temporary');
         temporary.insertAdjacentText('afterbegin', inner);
