@@ -596,7 +596,7 @@ function choiceDays () {
         const currentWrap = variableName.closest('.calendar-wrap');
         const currentMonth = currentWrap.querySelector('.calendar-month');
         const currentYears = currentWrap.querySelector('.calendar-year');
-        const dateFirst = new Date(`${parseInt(variableName.textContent)} ${parseInt(currentYears.textContent)} ${currentMonth.textContent}`);
+        const dateFirst = new Date(`${parseInt(variableName.textContent)}, ${parseInt(currentYears.textContent)}, ${currentMonth.textContent}`);
 	
         // const date1 = new Date;
         const temporary = document.querySelector('.temporary');
