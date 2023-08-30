@@ -457,7 +457,7 @@ function calcPrice () {
   saveToLocalStoragePrice()
 }
 
-// choiceDays ()
+choiceDays ()
 calcPrice ()
 
 function saveToLocalStorage() {
